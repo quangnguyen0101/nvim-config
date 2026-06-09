@@ -27,20 +27,19 @@ map("n", "<C-s>", ":w<CR>", { silent = true, desc = "Save file" })
 map("n", "<C-q>", ":q<CR>", { silent = true, desc = "Quit" })
 
 -- ── File: Explorer ─────────────────────────────────────────────
-map("n", "<leader>e", ":Ex<CR>", { silent = true, desc = "Netrw explorer" })
-map({ "n", "v" }, "<leader>t", ":Neotree toggle<CR>", { silent = true, desc = "Toggle Neotree" })
+map({ "n", "v" }, "<leader>e", ":Neotree toggle<CR>", { silent = true, desc = "Toggle Neotree" })
 
--- ── Theme: Cycle themes ─────────────────────────────────────────
+-- ── UI: Cycle themes ───────────────────────────────────────────
 local _themes = { "rose-pine", "tokyonight", "accent", "catppuccin" }
 local _theme_idx = 4
-map("n", "<A-t>", function()
+map("n", "<leader>ut", function()
     _theme_idx = (_theme_idx % #_themes) + 1
     vim.cmd.colorscheme(_themes[_theme_idx])
     print("Theme: " .. _themes[_theme_idx])
 end, { noremap = true, silent = true, desc = "Cycle theme" })
 
 -- ── File: Copy path / Open in browser ──────────────────────────
-map("n", "<A-c>", function()
+map("n", "<leader>yc", function()
     local fp = vim.fn.expand("%:p")
     vim.fn.setreg("+", fp)
     print("Copied: " .. fp)
@@ -140,22 +139,18 @@ map("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Ne
 map("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Prev TODO" })
 
 -- ── Opencode ────────────────────────────────────────────────────
-map({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end,
+map({ "n", "x" }, "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end,
     { desc = "Ask opencode" })
-map({ "n", "x" }, "<C-x>", function() require("opencode").select() end, { desc = "Select opencode" })
-map({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
+map({ "n", "x" }, "<leader>ox", function() require("opencode").select() end, { desc = "Select opencode" })
+map({ "n", "t" }, "<leader>ot", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
 map({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end,
     { desc = "Add range to opencode", expr = true })
 map("n", "goo", function() return require("opencode").operator("@this ") .. "_" end,
     { desc = "Add line to opencode", expr = true })
-map("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,
+map("n", "<leader>ou", function() require("opencode").command("session.half.page.up") end,
     { desc = "Scroll opencode up" })
-map("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end,
+map("n", "<leader>od", function() require("opencode").command("session.half.page.down") end,
     { desc = "Scroll opencode down" })
-
--- Restore native +/-
-map("n", "+", "<C-a>", { desc = "Increment number", noremap = true })
-map("n", "-", "<C-x>", { desc = "Decrement number", noremap = true })
 
 -- ── LSP ─────────────────────────────────────────────────────────
 map("n", "<leader>rn", function() vim.lsp.buf.rename() end, { desc = "Rename symbol" })

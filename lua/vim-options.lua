@@ -80,7 +80,4 @@ vim.api.nvim_create_autocmd("CursorHold", {
     end
 })
 
--- ==========================================
--- Keymaps
--- ==========================================
 vim.g.mapleader = " "

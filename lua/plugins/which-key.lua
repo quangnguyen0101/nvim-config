@@ -27,34 +27,14 @@ return {
                 wk.show({ global = true })
             end, { desc = "Show ALL keymaps" })
 
-            -- Đặt tên nhóm cho các leader key
+            -- Mô tả cho Ctrl/Alt mappings còn lại
             wk.add({
-                { "<leader>a", group = "AI" },
-                { "<leader>b", group = "Buffer" },
-                { "<leader>c", group = "Code" },
-                { "<leader>d", group = "Debug" },
-                { "<leader>e", desc = "Netrw explorer" },
-                { "<leader>f", group = "Find" },
-                { "<leader>g", group = "Git" },
-                { "<leader>n", group = "Notifications" },
-                { "<leader>o", group = "Open" },
-                { "<leader>s", group = "Split" },
-                { "<leader>t", group = "Terminal" },
-                { "<leader>w", desc = "Save file" },
-            })
-
-            -- Đăng ký desc cho Ctrl/Alt mappings để which-key hiển thị
-            wk.add({
-                -- Editor
                 { "<C-d>", desc = "Scroll down centered" },
                 { "<C-u>", desc = "Scroll up centered" },
                 { "<C-s>", desc = "Save file" },
                 { "<C-q>", desc = "Quit" },
                 { "<A-Left>", desc = "Start of line" },
                 { "<A-Right>", desc = "End of line" },
-                { "<A-c>", desc = "Copy file path" },
-                { "<A-t>", desc = "Cycle theme" },
-                -- Window
                 { "<C-Left>", desc = "Go left split" },
                 { "<C-Right>", desc = "Go right split" },
                 { "<C-Down>", desc = "Go down split" },
@@ -64,12 +44,24 @@ return {
                 { "<A-}>", desc = "Grow width" },
                 { "<A-{>", desc = "Shrink width" },
                 { "<A-=>", desc = "Equalize splits" },
-                -- Opencode
-                { "<C-a>", desc = "Ask opencode" },
-                { "<C-x>", desc = "Select opencode" },
-                { "<C-.>", desc = "Toggle opencode" },
-                { "<S-C-u>", desc = "Scroll opencode up" },
-                { "<S-C-d>", desc = "Scroll opencode down" },
+            })
+
+            -- Đặt tên nhóm cho các leader key
+            wk.add({
+                { "<leader>a", group = "AI" },
+                { "<leader>b", group = "Buffer" },
+                { "<leader>c", group = "Code" },
+                { "<leader>d", group = "Debug" },
+                { "<leader>e", desc = "Toggle Neotree" },
+                { "<leader>f", group = "Find" },
+                { "<leader>g", group = "Git" },
+                { "<leader>n", group = "Notifications" },
+                { "<leader>o", group = "Open / Opencode" },
+                { "<leader>s", group = "Split" },
+                { "<leader>t", group = "Terminal" },
+                { "<leader>u", group = "UI" },
+                { "<leader>w", desc = "Save file" },
+                { "<leader>y", group = "Yank" },
             })
         end,
     },
