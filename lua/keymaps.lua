@@ -84,10 +84,10 @@ map("n", "<C-Down>", "<C-w>j", { desc = "Go down" })
 map("n", "<C-Up>", "<C-w>k", { desc = "Go up" })
 
 -- Split resize
-map("n", "<leader>s+", ":resize +2<CR>", { silent = true, desc = "Grow height" })
-map("n", "<leader>s-", ":resize -2<CR>", { silent = true, desc = "Shrink height" })
-map("n", "<leader>s[", ":vertical resize -2<CR>", { silent = true, desc = "Shrink width" })
-map("n", "<leader>s]", ":vertical resize +2<CR>", { silent = true, desc = "Grow width" })
+map("n", "<A-Up>", ":resize +2<CR>", { silent = true, desc = "Grow height" })
+map("n", "<A-Down>", ":resize -2<CR>", { silent = true, desc = "Shrink height" })
+map("n", "<A-,>", ":vertical resize -2<CR>", { silent = true, desc = "Shrink width" })
+map("n", "<A-.>", ":vertical resize +2<CR>", { silent = true, desc = "Grow width" })
 map("n", "<leader>s=", ":wincmd =<CR>", { silent = true, desc = "Equalize splits" })
 
 -- ── Bufferline ──────────────────────────────────────────────────
@@ -160,9 +160,13 @@ map({ "n", "v" }, "<leader>ca", function() vim.lsp.buf.code_action() end, { desc
 map("n", "<leader>fm", function()
     local ft = vim.bo.filetype
     local sym_map = {
-        python = "function", javascript = "function", typescript = "function",
-        java = "class", lua = "function",
-        c = { "function", "struct" }, cpp = { "function", "class", "struct" },
+        python = "function",
+        javascript = "function",
+        typescript = "function",
+        java = "class",
+        lua = "function",
+        c = { "function", "struct" },
+        cpp = { "function", "class", "struct" },
         rust = { "function", "struct", "impl" },
     }
     tel().lsp_document_symbols({ symbols = sym_map[ft] or "function" })
