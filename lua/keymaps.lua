@@ -84,11 +84,11 @@ map("n", "<C-Down>", "<C-w>j", { desc = "Go down" })
 map("n", "<C-Up>", "<C-w>k", { desc = "Go up" })
 
 -- Split resize
-map("n", "<A-]>", ":resize +2<CR>", { silent = true, desc = "Grow height" })
-map("n", "<A-[>", ":resize -2<CR>", { silent = true, desc = "Shrink height" })
-map("n", "<A-{>", ":vertical resize -2<CR>", { silent = true, desc = "Shrink width" })
-map("n", "<A-}>", ":vertical resize +2<CR>", { silent = true, desc = "Grow width" })
-map("n", "<A-=>", ":wincmd =<CR>", { silent = true, desc = "Equalize splits" })
+map("n", "<leader>s+", ":resize +2<CR>", { silent = true, desc = "Grow height" })
+map("n", "<leader>s-", ":resize -2<CR>", { silent = true, desc = "Shrink height" })
+map("n", "<leader>s[", ":vertical resize -2<CR>", { silent = true, desc = "Shrink width" })
+map("n", "<leader>s]", ":vertical resize +2<CR>", { silent = true, desc = "Grow width" })
+map("n", "<leader>s=", ":wincmd =<CR>", { silent = true, desc = "Equalize splits" })
 
 -- ── Bufferline ──────────────────────────────────────────────────
 map("n", "<S-l>", function() vim.cmd("BufferLineCycleNext") end, { desc = "Next buffer" })

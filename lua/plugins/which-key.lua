@@ -35,15 +35,6 @@ return {
                 { "<C-q>", desc = "Quit" },
                 { "<A-Left>", desc = "Start of line" },
                 { "<A-Right>", desc = "End of line" },
-                { "<C-Left>", desc = "Go left split" },
-                { "<C-Right>", desc = "Go right split" },
-                { "<C-Down>", desc = "Go down split" },
-                { "<C-Up>", desc = "Go up split" },
-                { "<A-]>", desc = "Grow height" },
-                { "<A-[>", desc = "Shrink height" },
-                { "<A-}>", desc = "Grow width" },
-                { "<A-{>", desc = "Shrink width" },
-                { "<A-=>", desc = "Equalize splits" },
             })
 
             -- Đặt tên nhóm cho các leader key
