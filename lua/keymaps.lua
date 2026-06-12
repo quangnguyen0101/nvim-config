@@ -84,11 +84,11 @@ map("n", "<C-Down>", "<C-w>j", { desc = "Go down" })
 map("n", "<C-Up>", "<C-w>k", { desc = "Go up" })
 
 -- Split resize
-map("n", "<A-Up>", ":resize +2<CR>", { silent = true, desc = "Grow height" })
-map("n", "<A-Down>", ":resize -2<CR>", { silent = true, desc = "Shrink height" })
+map("n", "<A-]>", ":resize +2<CR>", { silent = true, desc = "Grow height" })
+map("n", "<A-[>", ":resize -2<CR>", { silent = true, desc = "Shrink height" })
 map("n", "<A-,>", ":vertical resize -2<CR>", { silent = true, desc = "Shrink width" })
 map("n", "<A-.>", ":vertical resize +2<CR>", { silent = true, desc = "Grow width" })
-map("n", "<leader>s=", ":wincmd =<CR>", { silent = true, desc = "Equalize splits" })
+map("n", "<A-=>", ":wincmd =<CR>", { silent = true, desc = "Equalize splits" })
 
 -- ── Bufferline ──────────────────────────────────────────────────
 map("n", "<S-l>", function() vim.cmd("BufferLineCycleNext") end, { desc = "Next buffer" })
@@ -142,7 +142,6 @@ map("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Pr
 map({ "n", "x" }, "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end,
     { desc = "Ask opencode" })
 map({ "n", "x" }, "<leader>ox", function() require("opencode").select() end, { desc = "Select opencode" })
-map({ "n", "t" }, "<leader>ot", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
 map({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end,
     { desc = "Add range to opencode", expr = true })
 map("n", "goo", function() return require("opencode").operator("@this ") .. "_" end,
