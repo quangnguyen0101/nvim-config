@@ -31,9 +31,9 @@ Leader key: `<Space>`. Press `<Space>?` to show all keymaps via [which-key](http
 | `sx` | Close split |
 | `so` | Close other splits |
 | `sr` | Rotate splits |
-| `s+` / `s-` | Grow / Shrink height |
-| `s]` / `s[` | Grow / Shrink width |
-| `s=` | Equalize splits |
+| `<A-]>` / `<A-[>` | Grow / Shrink height |
+| `<A-.>` / `<A-,>` | Grow / Shrink width |
+| `<A-=>` | Equalize splits |
 | `<C-arrows>` | Navigate splits |
 
 ### Buffer (`<leader>b`)
