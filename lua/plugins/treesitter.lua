@@ -1,52 +1,47 @@
 return {
     'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
+    branch = 'main',     -- rewrite chính thức, hỗ trợ Neovim 0.12
     lazy = false,        -- Tải ngay khi Neovim khởi động
-    build = ':TSUpdate', -- Tự động cập nhật parser sau khi cài đặt
+    build = ':TSUpdate', -- Cập nhật parsers sau khi cài đặt
     config = function()
-        -- Chỉ chạy phần này khi plugin đã được tải xong
-        local configs = require("nvim-treesitter.configs")
-        configs.setup({
-            ensure_installed = {
-                "c",
-                "cpp",
-                "c_sharp",
-                "python",
-                "rust",
-                "html",
-                "css",
-                "csv",
-                "java",
-                "javascript",
-                "json",
-                "latex"
+        -- Branch main đã bỏ configs.setup và các module (highlight/indent/folds).
+        -- Chỉ cần khai báo danh sách parsers; chúng được tải về đúng ABI cho nvim 0.12.
+        -- "latex" không có ở đây: vimtex dùng syntax riêng, xem treesitter.lua history.
+        require('nvim-treesitter').install({
+            'bash',
+            'c',
+            'cpp',
+            'c_sharp',
+            'css',
+            'csv',
+            'html',
+            'java',
+            'javascript',
+            'json',
+            'markdown',
+            'markdown_inline',
+            'python',
+            'regex',
+            'rust',
+            'tsx',
+            'typescript',
+        })
+
+        -- Highlight: runtime nvim 0.12 tự bật cho lua/help/query/markdown,
+        -- các filetype còn lại cần vim.treesitter.start() thủ công.
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = {
+                'bash', 'sh', 'zsh',
+                'c', 'cpp', 'cs',
+                'css', 'csv', 'html',
+                'java',
+                'javascript', 'javascriptreact',
+                'typescript', 'typescriptreact',
+                'json', 'python', 'rust',
             },
-            modules = {},
-            ignore_install = {},
-            auto_install = true,
-            sync_install = false, -- Cài đặt song song để nhanh hơn
-
-            highlight = {
-                enable = true,
-
-                -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-                -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-                -- the name of the parser)
-                -- list of language that will be disabled
-                disable = function(lang, buf)
-                    local max_filesize = 100 * 1024 -- 100 KB
-                    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                    if ok and stats and stats.size > max_filesize then
-                        return true
-                    end
-                end,
-
-                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-                -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-                -- Using this option may slow down your editor, and you may see some duplicate highlights.
-                -- Instead of true it can also be a list of languages
-                additional_vim_regex_highlighting = false,
-            },
+            callback = function(args)
+                pcall(vim.treesitter.start, args.buf)
+            end,
         })
     end,
 }

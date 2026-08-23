@@ -18,7 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 require("vim-options")
 require("vim-helpers")
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+    rocks = { enabled = false }, -- không dùng plugin nào cần luarocks
+})
 
 -- load all keymaps (after lazy so plugin cmds are available)
 require("keymaps")
