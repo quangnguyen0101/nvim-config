@@ -61,6 +61,7 @@ return {
                 { "<leader>t", group = "Terminal" },
                 { "<leader>u", group = "UI" },
                 { "<leader>w", desc = "Save file" },
+                { "<leader>x", group = "TeX" },
                 { "<leader>y", group = "Yank" },
             })
         end,

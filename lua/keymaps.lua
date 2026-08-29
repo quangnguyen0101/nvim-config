@@ -185,3 +185,22 @@ map("n", "<leader>gc", function() tel().git_commits() end, { desc = "Git commits
 map("n", "<leader>gb", function() tel().git_branches() end, { desc = "Git branches" })
 map("n", "<leader>gd", function() tel().git_diff() end, { desc = "Git diff" })
 map("n", "<leader>gf", function() tel().git_files() end, { desc = "Git files" })
+
+-- ── LaTeX (vimtex) ────────────────────────────────────────────────
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "tex",
+    desc = "vimtex keymaps",
+    callback = function()
+        local tex = function(cmd) return function() vim.cmd(cmd) end end
+        local m = vim.keymap.set
+        m("n", "<leader>xc", tex("VimtexCompile"),       { buffer = true, desc = "Compile (latexmk)" })
+        m("n", "<leader>xC", tex("VimtexClean"),         { buffer = true, desc = "Clean aux files" })
+        m("n", "<leader>xv", tex("VimtexView"),          { buffer = true, desc = "View PDF (zathura)" })
+        m("n", "<leader>xt", tex("VimtexTocToggle"),     { buffer = true, desc = "Toggle TOC" })
+        m("n", "<leader>xe", tex("VimtexErrors"),        { buffer = true, desc = "Show errors" })
+        m("n", "<leader>xo", tex("VimtexCompileOutput"), { buffer = true, desc = "Compile output" })
+        m("n", "<leader>xk", tex("VimtexStop"),          { buffer = true, desc = "Stop compiler" })
+        m("n", "<leader>xr", tex("VimtexReload"),        { buffer = true, desc = "Reload vimtex" })
+        m("n", "<leader>xw", tex("VimtexCountWords"),    { buffer = true, desc = "Count words" })
+    end,
+})
