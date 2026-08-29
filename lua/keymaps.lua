@@ -186,6 +186,9 @@ map("n", "<leader>gb", function() tel().git_branches() end, { desc = "Git branch
 map("n", "<leader>gd", function() tel().git_diff() end, { desc = "Git diff" })
 map("n", "<leader>gf", function() tel().git_files() end, { desc = "Git files" })
 
+-- NOTE: LaTeX (vimtex) keymaps ĐANG TẮT — bật cùng vimtex ở lua/plugins/vimtex.lua
+-- Bật lại: xoá 2 dòng "--[[" và "--]]" bên dưới.
+--[[
 -- ── LaTeX (vimtex) ────────────────────────────────────────────────
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "tex",
@@ -204,3 +207,4 @@ vim.api.nvim_create_autocmd("FileType", {
         m("n", "<leader>xw", tex("VimtexCountWords"),    { buffer = true, desc = "Count words" })
     end,
 })
+--]]
