@@ -20,6 +20,7 @@ return {
             'json',
             'markdown',
             'markdown_inline',
+            'nix',
             'python',
             'regex',
             'rust',
@@ -37,7 +38,7 @@ return {
                 'java',
                 'javascript', 'javascriptreact',
                 'typescript', 'typescriptreact',
-                'json', 'python', 'rust',
+                'json', 'nix', 'python', 'rust',
             },
             callback = function(args)
                 pcall(vim.treesitter.start, args.buf)
